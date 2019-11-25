@@ -1,0 +1,57 @@
+.piggame {
+	&__btns {
+		&--rolldice {
+			color: white;
+			font-weight: 500;
+			font-size: 2.5rem;
+			font-family: $font-2;
+		}
+
+		&--hold {
+			color: white;
+			font-weight: 500;
+			font-size: 2.5rem;
+			font-family: $font-2;
+		}
+	}
+
+	&__info {
+		&--firstnumber,
+		&--secondnumber {
+			color: $primary-grey;
+			font-size: 7.5rem;
+			font-weight: 700;
+			font-family: $font-3;
+		}
+	}
+
+	&__score {
+		&--name,
+		&--point {
+			font-size: 4.5rem;
+			font-family: $font-2;
+			color: white;
+		}
+
+		&--point {
+			color: $primary-green;
+			font-family: $font-1;
+			font-size: 7rem;
+		}
+	}
+
+	&__current {
+		&--name {
+			color: $primary-orange;
+			font-weight: 600;
+			font-size: 5rem;
+			font-family: $font-1;
+		}
+		&--point {
+			color: white;
+			font-weight: 500;
+			font-size: 3rem;
+			font-family: $font-2;
+		}
+	}
+}

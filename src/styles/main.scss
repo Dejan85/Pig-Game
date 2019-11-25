@@ -1,14 +1,17 @@
 // variables
-// @import "./variables/colors";
+@import "./variables/colors";
+@import "./variables/font";
 
 // mixins
 @import "./mixins/respond";
+@import "./mixins/boxshadow";
 
 // base
 @import "../styles/base/base";
+@import "../styles/layout/dice";
 
 // layout
 @import "../styles/layout/piggame";
 
 // typografy
-
+@import "../styles/typograpfy/piggame";

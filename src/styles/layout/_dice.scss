@@ -1,0 +1,79 @@
+.piggame {
+	&__dice {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		max-width: 40rem;
+		width: 100%;
+
+		&--cube {
+			position: relative;
+			width: 16rem;
+			height: 16rem;
+
+			animation-name: cube;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+			animation-duration: 3s;
+			transform-style: preserve-3d;
+			transform-origin: 60px 60px 0;
+
+			&:nth-child(2) {
+				margin: 4rem 0 0 0;
+			}
+		}
+
+		&--face {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			font-size: 10rem;
+			font-family: $font-2;
+			background: rgba($color: $primary-yellow, $alpha: 0.9);
+			position: absolute;
+
+			&:nth-child(1) {
+				transform: translateZ(8rem);
+			}
+			&:nth-child(2) {
+				transform: rotateY(90deg) translateZ(8rem);
+			}
+			&:nth-child(3) {
+				transform: rotateY(90deg) rotateX(90deg) translateZ(8rem);
+			}
+			&:nth-child(4) {
+				transform: rotateY(180deg) rotateZ(90deg) translateZ(8rem);
+			}
+			&:nth-child(5) {
+				transform: rotateY(-90deg) rotateZ(180deg) translateZ(8rem);
+			}
+			&:nth-child(6) {
+				transform: rotateX(-90deg) translateZ(8rem);
+			}
+
+			@keyframes cube {
+				0% {
+					transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+				}
+				35% {
+					transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+				}
+				45% {
+					transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+				}
+				65% {
+					transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+				}
+				75% {
+					transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+				}
+				100% {
+					transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+				}
+			}
+		}
+	}
+}
