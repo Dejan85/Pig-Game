@@ -1,0 +1,12 @@
+.piggame {
+	display: flex;
+	height: 100vh;
+	width: 100%;
+	background-image: url("images/background.jpg");
+	padding: 0 7rem;
+
+	&__container{
+		background: red;
+		width: 100%;
+	}
+}
