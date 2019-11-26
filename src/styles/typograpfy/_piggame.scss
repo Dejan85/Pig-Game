@@ -25,6 +25,30 @@
 		}
 	}
 
+	&__value {
+		&--info {
+			font-family: $font-1;
+
+			&:nth-child(1) {
+				font-size: 4rem;
+				color: $primary-red;
+				font-weight: 800;
+			}
+
+			&:nth-child(2) {
+				font-family: $font-2;
+				font-size: 1.7rem;
+				color: white;
+			}
+
+			&:nth-child(3) {
+				font-family: $font-2;
+				font-size: 1.5rem;
+				color: $primary-green;
+			}
+		}
+	}
+
 	&__score {
 		&--name,
 		&--point {

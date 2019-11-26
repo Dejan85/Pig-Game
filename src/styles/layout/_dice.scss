@@ -9,8 +9,8 @@
 
 		&--cube {
 			position: relative;
-			width: 16rem;
-			height: 16rem;
+			width: 14rem;
+			height: 14rem;
 
 			animation-name: cube;
 			animation-timing-function: ease-in-out;
@@ -36,22 +36,22 @@
 			position: absolute;
 
 			&:nth-child(1) {
-				transform: translateZ(8rem);
+				transform: translateZ(7rem);
 			}
 			&:nth-child(2) {
-				transform: rotateY(90deg) translateZ(8rem);
+				transform: rotateY(90deg) translateZ(7rem);
 			}
 			&:nth-child(3) {
-				transform: rotateY(90deg) rotateX(90deg) translateZ(8rem);
+				transform: rotateY(90deg) rotateX(90deg) translateZ(7rem);
 			}
 			&:nth-child(4) {
-				transform: rotateY(180deg) rotateZ(90deg) translateZ(8rem);
+				transform: rotateY(180deg) rotateZ(90deg) translateZ(7rem);
 			}
 			&:nth-child(5) {
-				transform: rotateY(-90deg) rotateZ(180deg) translateZ(8rem);
+				transform: rotateY(-90deg) rotateZ(180deg) translateZ(7rem);
 			}
 			&:nth-child(6) {
-				transform: rotateX(-90deg) translateZ(8rem);
+				transform: rotateX(-90deg) translateZ(7rem);
 			}
 
 			@keyframes cube {

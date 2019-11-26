@@ -1,0 +1,61 @@
+.piggame {
+	&__setupGame {
+	}
+
+	&__create {
+		&--h1 {
+			font-size: 5rem;
+			color: white;
+			font-family: $font-1;
+			font-weight: 500;
+		}
+
+		&--p {
+			font-size: 2.5rem;
+			color: $primary-grey;
+			font-family: $font-2;
+		}
+
+		&--input {
+			display: flex;
+			align-items: center;
+			p {
+				color: white;
+				font-size: 4.5rem;
+				font-family: $font-2;
+			}
+
+			input {
+				text-align: center;
+				color: white;
+				font-size: 3.5rem;
+				font-family: $font-1;
+			}
+		}
+
+		&--betsChoices {
+			button {
+				color: $primary-green;
+				font-family: $font-1;
+				font-weight: 600;
+			}
+		}
+
+		&--btn {
+			button {
+				color: white;
+				font-size: 3rem;
+				font-family: $font-3;
+			}
+		}
+	}
+
+	&__account {
+	}
+
+	&__amount {
+	}
+
+	&__history {
+	}
+}

@@ -14,68 +14,31 @@
 
 <body>
     <div class="piggame">
-        <div class="piggame__container">
-            <div class="piggame__header">
-                <div class="piggame__btns">
-                    <button class="piggame__btns--rolldice">Roll Dice!</button>
-                    <button class="piggame__btns--hold">Hold</button>
+        <div class="piggame__setupGame">
+            <div class="piggame__create">
+                <h1 class="piggame__create--h1"><span>Create</span><span>Game</span></h1>
+                <p class="piggame__create--p">Select bets size</p>
+                <div class="piggame__create--betsChoices">
+                    <button>1 / 2</button>
+                    <button>2x</button>
+                    <button>min</button>
+                    <button>max</button>
                 </div>
-                <div class="piggame__info">
-                    <div class="piggame__info--limit">
-                        <div class="piggame__info--firstnumber">
-                            <p>4</p>
-                        </div>
-                        <div class="piggame__info--secondnumber">
-                            <p>2</p>
-                        </div>
-                        <div></div>
-                    </div>
-                    <!-- <p class="piggame__info--info">Who first earn 50 he win!</p> -->
+                <div class="piggame__create--input">
+                    <p>-</p>
+                    <input value="100">
+                    <p>+</p>
                 </div>
+                <div class="piggame__create--btn">
+                    <button>Create Account</button>
+
+                </div>
+
             </div>
-            <div class="piggame__body">
-                <!-- player -->
-                <div class="piggame__player">
-                    <div class="piggame__score">
-                        <p class="piggame__score--name">You</p>
-                        <p class="piggame__score--point">0</p>
-                    </div>
-                    <div class="piggame__current">
-                        <p class="piggame__current--name">0</p>
-                        <p class="piggame__current--point">current</p>
-                    </div>
-                </div>
-                <div class="piggame__dice">
-                    <div class="piggame__dice--cube">
-                        <div class="piggame__dice--face">1</div>
-                        <div class="piggame__dice--face">2</div>
-                        <div class="piggame__dice--face">3</div>
-                        <div class="piggame__dice--face">4</div>
-                        <div class="piggame__dice--face">5</div>
-                        <div class="piggame__dice--face">6</div>
-                    </div>
-                    <div class="piggame__dice--cube">
-                        <div class="piggame__dice--face">1</div>
-                        <div class="piggame__dice--face">2</div>
-                        <div class="piggame__dice--face">3</div>
-                        <div class="piggame__dice--face">4</div>
-                        <div class="piggame__dice--face">5</div>
-                        <div class="piggame__dice--face">6</div>
-                    </div>
-                </div>
-                <!-- rival -->
-                <div class="piggame__player">
-                    <div class="piggame__score">
-                        <p class="piggame__score--name">Rival</p>
-                        <p class="piggame__score--point">0</p>
-                    </div>
-                    <div class="piggame__current">
-                        <p class="piggame__current--name">0</p>
-                        <p class="piggame__current--point">current</p>
-                    </div>
-                </div>
-            </div>
-        </div>>
+            <div class="piggame__account"></div>
+            <div class="piggame__amount"></div>
+            <div class="piggame__history"></div>
+        </div>
     </div>
 </body>
 

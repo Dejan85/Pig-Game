@@ -5,6 +5,7 @@
 // mixins
 @import "./mixins/respond";
 @import "./mixins/boxshadow";
+@import "./mixins/border";
 
 // base
 @import "../styles/base/base";
@@ -12,6 +13,8 @@
 
 // layout
 @import "../styles/layout/piggame";
+@import "../styles/layout/setupgame";
 
 // typografy
 @import "../styles/typograpfy/piggame";
+@import "../styles/typograpfy/setupgame";
