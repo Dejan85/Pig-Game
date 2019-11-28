@@ -93,7 +93,7 @@
 		justify-content: space-between;
 		height: 75%;
 
-		@include border;
+		@include border(1);
 	}
 
 	&__player {

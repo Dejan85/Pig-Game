@@ -5,16 +5,19 @@
 		display: flex;
 		width: 100%;
 		height: 100%;
-		@include border;
+		@include border(1);
+		padding: 13rem 0 0 0;
+		justify-content: space-around;
 	}
 
 	&__create {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		// width: 60%;
+		max-width: 35rem;
 		width: 100%;
 		// outline: hotpink 1px solid;
-		padding: 15rem 0 0 0;
 
 		&--h1 {
 			display: flex;
@@ -82,14 +85,151 @@
 	}
 
 	&__account {
+		max-width: 40rem;
 		width: 100%;
+
+		&--addorremove {
+			display: flex;
+			justify-content: center;
+			cursor: pointer;
+			user-select: none;
+			padding: 2rem 0;
+
+			span {
+				transition: color .5s;
+			}
+		}
+
+		&--name {
+			border-bottom: 1px solid $primary-grey;
+			padding: 0 0 5px 4rem;
+			margin: 2rem 0 0 0;
+		}
+
+		&--list {
+			@include border(2);
+			height: 40rem;
+			margin: 2rem 0 0 0;
+			padding: 0 1rem 0 0;
+			overflow-y: auto;
+
+			p {
+				display: flex;
+				align-items: center;
+				position: relative;
+				height: 5rem;
+				margin: 1rem 0 0 0;
+				padding: 0 0 0 1rem;
+				cursor: pointer;
+				user-select: none;
+				background: #43587f;
+				transition: background .5s;
+
+				&:hover {
+					background: lighten(#43587f, 10%);
+				}
+
+				i {
+					color: #142442;
+					&:nth-child(3) {
+						color: $primary-red;
+						position: absolute;
+						right: 2rem;
+						transition: color .5s;
+					}
+				}
+
+				span {
+					padding: 0 0 0 1rem;
+				}
+			}
+		}
 	}
 
 	&__amount {
+		max-width: 40rem;
 		width: 100%;
+
+		&--name {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid $primary-grey;
+			padding: 0 0 5px 0;
+			margin: 2rem 0 0 0;
+
+			P {
+				&:nth-child(1) {
+					padding: 0 0 0 1rem;
+				}
+
+				&:nth-child(2) {
+					padding: 0 2rem 0 0;
+				}
+			}
+		}
+
+		&--list {
+			@include border(2);
+			height: 40rem;
+			margin: 2rem 0 0 0;
+			padding: 0 1rem 0 0;
+			overflow-y: auto;
+		}
+
+		&--money {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 5rem;
+			margin: 1rem 0 0 0;
+			padding: 0 0 0 1rem;
+		}
 	}
 
 	&__history {
+		max-width: 40rem;
 		width: 100%;
+
+		&--name {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid $primary-grey;
+			padding: 0 0 5px 0;
+			margin: 2rem 0 0 0;
+
+			P {
+				&:nth-child(1) {
+					padding: 0 0 0 1rem;
+				}
+
+				&:nth-child(2) {
+					padding-left: 6rem;
+				}
+
+				&:nth-child(3) {
+					padding: 0 1rem 0 0;
+				}
+			}
+		}
+
+		&--list {
+			display: flex;
+			flex-direction: column;
+			@include border(2);
+			height: 40rem;
+			margin: 2rem 0 0 0;
+			padding: 0 1rem 0 0;
+			overflow-y: auto;
+		}
+
+		&--date {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 0 0 1rem;
+
+			p {
+				padding: 1rem 0;
+			}
+		}
 	}
 }

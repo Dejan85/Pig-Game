@@ -4,7 +4,7 @@
 
 	&__create {
 		&--h1 {
-			font-size: 5rem;
+			font-size: 6rem;
 			color: white;
 			font-family: $font-1;
 			font-weight: 500;
@@ -51,11 +51,88 @@
 	}
 
 	&__account {
+		&--h2 {
+			color: white;
+			font-size: 3rem;
+			font-family: $font-3;
+			font-weight: 500;
+		}
+
+		&--addorremove {
+			color: $primary-green;
+			font-size: 5rem;
+			font-family: $font-2;
+
+			span {
+				&:hover {
+					color: darken($primary-green, 10%);
+				}
+			}
+		}
+
+		&--name {
+			color: $primary-grey;
+			font-family: $font-3;
+			font-size: 1.5rem;
+		}
+
+		&--list {
+			color: $primary-orange;
+			font-family: $font-1;
+			font-size: 2.2rem;
+			font-weight: 500;
+
+			p {
+				i {
+					&:nth-child(3) {
+						&:hover {
+							color: lighten($primary-red, 20%);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	&__amount {
+		&--name {
+			p {
+				color: $primary-grey;
+				font-family: $font-3;
+				font-size: 1.5rem;
+			}
+		}
+
+		&--money {
+			font-size: 3.5rem;
+			font-family: $font-1;
+			font-weight: 600;
+
+			p {
+				&:nth-child(1) {
+					color: $primary-green;
+				}
+
+				&:nth-child(2) {
+					color: $primary-yellow;
+				}
+			}
+		}
 	}
 
 	&__history {
+		&--name {
+			p {
+				color: $primary-grey;
+				font-family: $font-3;
+				font-size: 1.5rem;
+			}
+		}
+
+		&--date {
+			font-size: 1.7rem;
+			font-family: $font-3;
+			color: white;
+		}
 	}
 }

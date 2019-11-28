@@ -77,10 +77,11 @@ const useDomHook = function() {
         </div>
     </div>`;
 
+		this.piggame.style.padding = '0 5rem';
 		this.piggame.innerHTML = html;
 	};
 
-	Dom.prototype.rolldiceBtn = function() {
+	Dom.prototype.domDidLoad = function() {
 		return document.querySelector('.piggame__btns--rolldice');
 	};
 

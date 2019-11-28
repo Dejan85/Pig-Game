@@ -1,4 +1,12 @@
-@mixin border {
-	border-top: 1px solid $border-color;
-	border-bottom: 1px solid $border-color;
+@mixin border($num) {
+	@if $num == 1 {
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+	}
+
+	@if $num == 2 {
+		border-right: 1rem solid;
+		border-image: linear-gradient(to bottom, lighten(#2b365b, 3%) 0%, #2a355c 100%);
+		border-image-slice: 1;
+	}
 }
