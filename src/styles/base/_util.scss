@@ -1,0 +1,35 @@
+.createAccInput {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	background: rgba($color: #000000, $alpha: .7);
+	z-index: 100;
+
+	&__input {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30rem;
+		height: 30rem;
+		top: 0rem;
+		left: 0;
+		right: 0;
+		left: 0;
+		margin: auto;
+		background: dakenn(#0e1220, 100%);
+		border-radius: 1rem;
+		// background-image: url('/src/styles/images/background.jpg');
+
+		input {
+			padding: 1rem;
+		}
+	}
+}

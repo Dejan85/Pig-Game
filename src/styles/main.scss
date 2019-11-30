@@ -9,9 +9,10 @@
 
 // base
 @import "../styles/base/base";
-@import "../styles/layout/dice";
+@import "../styles/base/util";
 
 // layout
+@import "../styles/layout/dice";
 @import "../styles/layout/piggame";
 @import "../styles/layout/setupgame";
 
