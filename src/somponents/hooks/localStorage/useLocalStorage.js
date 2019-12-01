@@ -1,6 +1,8 @@
 const useLocalStorage = () => {
-	const users = JSON.parse(localStorage.getItem('users')) || [];
+	// push account to local storage
 	const createAccount = (name) => {
+		const users = JSON.parse(localStorage.getItem('users')) || [];
+
 		users.push({
 			name: name,
 			money: 1000,
@@ -10,11 +12,24 @@ const useLocalStorage = () => {
 		localStorage.setItem('users', JSON.stringify(users));
 	};
 
+	// load acc from local storage
 	const getAccount = () => {
-		return JSON.parse(localStorage.getItem('users'));
+		const account = JSON.parse(localStorage.getItem('users'));
+		return account;
 	};
 
-	return { createAccount, getAccount };
+	// remove acc from local storage
+	const removeAccountById = (id) => {
+		const users = JSON.parse(localStorage.getItem('users'));
+		const accounts = users.filter((item, index) => {
+			return index !== id;
+		});
+
+		localStorage.setItem('users', JSON.stringify(accounts));
+		accounts.length = 0;
+	};
+
+	return { createAccount, getAccount, removeAccountById };
 };
 
 export default useLocalStorage;

@@ -8,7 +8,7 @@ dom.createGameDom();
 // load acc
 dom.loadAccount();
 
+//add click event on create acc btn
 dom.domDidMount().addAccountBtn.addEventListener('click', () => {
 	dom.createAccount();
 });
-// dom.createAccount();
