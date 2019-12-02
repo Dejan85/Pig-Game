@@ -1,6 +1,7 @@
 .piggame {
 	position: relative;
 	padding: 5rem;
+	user-select: none;
 
 	&__setupGame {
 		display: flex;

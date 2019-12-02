@@ -1,10 +1,10 @@
 const useState = function() {
-	const state = {};
+	const state = { input: 100, account: JSON.parse(localStorage.getItem('users')) };
 
 	//set state method
 	const setState = (obj) => {
+		Object.assign(state, obj);
 		console.log(state);
-		return Object.assign(state, obj);
 	};
 
 	return { state, setState };

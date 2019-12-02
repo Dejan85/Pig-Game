@@ -3,14 +3,14 @@ export const createGameHtml = `<div class="piggame__setupGame">
     <h1 class="piggame__create--h1"><span>Create</span><span>Game</span></h1>
     <p class="piggame__create--p">Select bets size</p>
     <div class="piggame__create--betsChoices">
-        <button>1 / 2</button>
-        <button>2x</button>
-        <button>min</button>
-        <button>max</button>
+        <button data-amount="1/2">1 / 2</button>
+        <button data-amount="2x">2x</button>
+        <button data-amount="min">min</button>
+        <button data-amount="max">max</button>
     </div>
     <div class="piggame__create--input">
         <p id="betsDecrease">-</p>
-        <input id="input__value" value="100">
+        <input id="input__value" value="200">
         <p id="betsIncrease">+</p>
     </div>
     <div class="piggame__create--btn">
