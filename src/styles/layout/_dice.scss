@@ -8,14 +8,44 @@
 		width: 100%;
 
 		&--cube {
+			--rotateX-0: 0deg;
+			--rotateY-0: 0deg;
+			--rotateZ-0: 0deg;
+			--translateX-0: 0;
+
+			--rotateX-35: 0deg;
+			--rotateY-35: 0deg;
+			--rotateZ-35: 0deg;
+			--translateX-35: 0;
+
+			--rotateX-45: 0deg;
+			--rotateY-45: 0deg;
+			--rotateZ-45: 0deg;
+			--translateX--45: 0;
+
+			--rotateX-65: 0deg;
+			--rotateY-65: 0deg;
+			--rotateZ-65: 0deg;
+			--translateX-65: 0;
+
+			--rotateX-75: 0deg;
+			--rotateY-75: 0deg;
+			--rotateZ-75: 0deg;
+			--translateX--75: 0;
+
+			--rotateX-100: 0deg;
+			--rotateY-100: 0deg;
+			--rotateZ-100: 0deg;
+			--translateX-100: 0;
+
 			position: relative;
 			width: 14rem;
 			height: 14rem;
 
-			animation-name: cube;
-			animation-timing-function: ease-in-out;
+			// animation-name: cube;
+			// animation-timing-function: ease-in-out;
 			animation-iteration-count: infinite;
-			animation-duration: 3s;
+			animation-duration: 2s;
 			transform-style: preserve-3d;
 			transform-origin: 60px 60px 0;
 
@@ -32,7 +62,7 @@
 			height: 100%;
 			font-size: 10rem;
 			font-family: $font-2;
-			background: rgba($color: $primary-yellow, $alpha: 0.9);
+			background: rgba($color: $primary-yellow, $alpha: 1);
 			position: absolute;
 
 			&:nth-child(1) {
@@ -56,22 +86,28 @@
 
 			@keyframes cube {
 				0% {
-					transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+					transform: rotateX(var(--rotateX-0)) rotateY(var(--rotateY-0)) rotateZ(var(--rotateZ-0))
+						translateX(0);
 				}
 				35% {
-					transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+					transform: rotateX(var(--rotateX-35)) rotateY(var(--rotateY-35)) rotateZ(var(--rotateZ-35))
+						translateX(0);
 				}
 				45% {
-					transform: rotateX(-180deg) rotateY(-90deg) rotateZ(0deg) translateX(0);
+					transform: rotateX(var(--rotateX-45)) rotateY(var(--rotateY-45)) rotateZ(var(--rotateZ-45))
+						translateX(0);
 				}
 				65% {
-					transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+					transform: rotateX(var(--rotateX-65)) rotateY(var(--rotateY-65)) rotateZ(var(--rotateZ-65))
+						translateX(0);
 				}
 				75% {
-					transform: rotateX(0deg) rotateY(0deg) rotateZ(-360deg) translateX(0);
+					transform: rotateX(var(--rotateX-75)) rotateY(var(--rotateY-75)) rotateZ(var(--rotateZ-75))
+						translateX(0);
 				}
 				100% {
-					transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg) translateX(0);
+					transform: rotateX(var(--rotateX-100)) rotateY(var(--rotateY-100)) rotateZ(var(--rotateZ-100))
+						translateX(0);
 				}
 			}
 		}

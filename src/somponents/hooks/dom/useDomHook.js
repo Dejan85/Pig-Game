@@ -1,11 +1,10 @@
 import { gamePlayHtml, createGameHtml } from './useHtmlAsString';
-import useLocalStorage from '../localStorage/useLocalStorage';
 import useState from '../state/useState';
-import { isObject } from 'util';
+import { isNumber } from 'util';
+import useGamePlay from '../gamePlay/useGamePlay';
 
 const useDomHook = function() {
-	const { createAccount, getAccount, removeAccountById } = useLocalStorage();
-	const { state, setState } = useState();
+	const { state, setState, removeByIdFromState, accountId, setAccountId, editState } = useState();
 
 	function Dom(piggame) {
 		this.piggame = piggame;
@@ -43,7 +42,9 @@ const useDomHook = function() {
 			playerScore: document.querySelector('#playerScore'),
 			playerCurrent: document.querySelector('#playerCurrent'),
 			rivalScore: document.querySelector('#rivalScore'),
-			rivalCurrent: document.querySelector('#rivalCurrent')
+			rivalCurrent: document.querySelector('#rivalCurrent'),
+			cube: document.querySelectorAll('.piggame__dice--cube'),
+			face_1: document.querySelectorAll('.face_1')
 		};
 	};
 
@@ -51,8 +52,6 @@ const useDomHook = function() {
 	Dom.prototype.createAccount = function() {
 		const { piggameCreate } = this.domDidMount();
 
-		// const accountHtml = `<p><i class="far fa-user"></i><span>Dejan</span><i class="far fa-trash-alt"></i>`;
-		// const totalBudgetHtml = `<div class="piggame__amount--money"><p>$</p><p>1000</p></div>`;
 		// const historyHtml = `<div class="piggame__history--date"><p>27. 11. 2019.</p><p>300</p><p>0</p></div>`;
 		const createAccInput = `<div class="createAccInput"><div class="createAccInput__input"><input autofocus id="input" placeholder="Enter Name"></div></div>`;
 		piggameCreate.innerHTML += createAccInput;
@@ -60,39 +59,31 @@ const useDomHook = function() {
 		document.querySelector('#input').onkeypress = (e) => {
 			if (e.keyCode === 13 || e.charCode === 13) {
 				const input = document.querySelector('.createAccInput');
-				createAccount(e.target.value);
+				setState({
+					playgame: false,
+					input: 100,
+					bets: 0,
+					name: e.target.value,
+					money: 1000,
+					history: []
+				});
 				input.parentNode.removeChild(input);
-				// call this hook again coz we need make rerender effect
-				this.loadAccount();
+				this.render();
 			}
 		};
 	};
 
 	// load acc from local storage
-	Dom.prototype.loadAccount = function() {
+	Dom.prototype.render = function() {
 		const { accountList, totalBudgetList, historyList } = this.domDidMount();
-
-		setState({
-			account: JSON.parse(localStorage.getItem('users'))
-		});
 
 		// reset dom to not get duplicate
 		accountList.innerHTML = '';
 		totalBudgetList.innerHTML = '';
 		historyList.innerHTML = '';
 
-		// getAccount() &&
-		// 	getAccount().forEach((item, index) => {
-		// 		accountList.innerHTML += `<p><i class="far fa-user"></i><span>${item.name}</span><i id="deleteBtn" data-key=${index} class="far fa-trash-alt"></i>`;
-		// 		totalBudgetList.innerHTML += `<div class="piggame__amount--money"><p>$</p><p>${item.money}</p></div>`;
-		// 		historyList.innerHTML += `<div class="piggame__history--date"></div>`;
-		// 		[ ...document.querySelectorAll('.piggame__history--date') ].forEach((item) => {
-		// 			// console.log(item);
-		// 		});
-		// 	});
-
-		state.account &&
-			state.account.forEach((item, index) => {
+		state &&
+			state.forEach((item, index) => {
 				accountList.innerHTML += `<p><i class="far fa-user"></i><span>${item.name}</span><i id="deleteBtn" data-key=${index} class="far fa-trash-alt"></i>`;
 				totalBudgetList.innerHTML += `<div class="piggame__amount--money"><p>$</p><p>${item.money}</p></div>`;
 				historyList.innerHTML += `<div class="piggame__history--date"></div>`;
@@ -113,9 +104,8 @@ const useDomHook = function() {
 		[ ...document.querySelectorAll('#deleteBtn') ].forEach((item) => {
 			item.onclick = function(e) {
 				e.stopPropagation();
-				removeAccountById(parseInt(this.getAttribute('data-key')));
-				dom.loadAccount();
-				setState({ playgame: false });
+				removeByIdFromState(parseInt(this.getAttribute('data-key')));
+				dom.render();
 				dom.btnTextContent();
 			};
 		});
@@ -124,88 +114,82 @@ const useDomHook = function() {
 	// select account method
 	Dom.prototype.selectAccount = function() {
 		const { accountList } = this.domDidMount();
-
 		[ ...accountList.children ].forEach((item, index) => {
 			item.onclick = () => {
 				[ ...accountList.children ].forEach((item2) => (item2.style.background = '#43587f'));
 				item.style.background = '#556FA0';
-				setState({
-					playgame: true,
-					account: getAccount()[index]
-				});
-				this.btnTextContent();
+
+				state[index].playgame = true;
+				setAccountId(index);
+
+				this.btnTextContent(index);
+				this.startGame();
 			};
 		});
+	};
+
+	// this method change text on button
+	Dom.prototype.btnTextContent = function(id) {
+		const { selectAccountBtn } = this.domDidMount();
+
+		if (isNumber(id) && state[id].playgame) {
+			selectAccountBtn.textContent = 'Play Game';
+		} else {
+			selectAccountBtn.textContent = 'Select Account';
+		}
 	};
 
 	// set bets on start game
 	Dom.prototype.setBets = function() {
 		const { betsDecrease, betsIncrease, input__value, betsBtns } = this.domDidMount();
 
-		if (isObject(state.account)) {
-			console.log('radi');
-			console.log(state.account);
-		}
-
 		betsDecrease.onclick = () => {
-			if (state.input > 0) {
-				setState({
-					input: --input__value.value
-				});
-			}
+			editState(accountId.id, 'input', --input__value.value);
 		};
+
 		betsIncrease.onclick = () => {
-			if (state.input < state.account.money) {
-				setState({
-					input: ++input__value.value
-				});
-			}
+			editState(accountId.id, 'input', ++input__value.value);
 		};
 
 		[ ...betsBtns.children ].forEach((item) => {
 			item.onclick = function() {
 				const amount = this.getAttribute('data-amount');
 
-				if (amount === '1/2') {
-					setState({
-						input: +input__value.value + input__value.value * 0.5
-					});
+				if (amount === '1/3') {
+					editState(accountId.id, 'input', Math.floor(state[accountId.id].money / 3));
+					input__value.value = Math.floor(state[accountId.id].money / 3);
 				}
 
-				if (amount === '2x') {
-					setState({
-						input: +input__value.value + input__value.value * 2
-					});
+				if (amount === '1/2') {
+					editState(accountId.id, 'input', Math.floor(state[accountId.id].money / 2));
+					input__value.value = Math.floor(state[accountId.id].money / 2);
 				}
 
 				if (amount === 'min') {
-					setState({
-						input: 20
-					});
+					editState(accountId.id, 'input', 50);
+					input__value.value = 50;
 				}
 
 				if (amount === 'max') {
-					setState({
-						input: state.account.money
-					});
+					editState(accountId.id, 'input', state[accountId.id].money);
+					input__value.value = state[accountId.id].money;
 				}
 			};
 		});
+
+		input__value.onkeypress = (e) => {
+			if (e.keyCode === 13 || e.charCode === 13) {
+				editState(accountId.id, 'input', +input__value.value);
+			}
+		};
 	};
 
-	// Dom.prototype.setInputValue = function() {
-	// 	const { input__value } = this.domDidMount();
-	// 	input__value.value = state.input;
-	// };
-
-	// this method change text on button
-	Dom.prototype.btnTextContent = function() {
-		const { selectAccountBtn } = this.domDidMount();
-		// console.log(state);
-		if (state.playgame) {
-			selectAccountBtn.textContent = 'Play Game';
-		} else {
-			selectAccountBtn.textContent = 'Select Account';
+	Dom.prototype.startGame = function() {
+		if (state[accountId.id].playgame) {
+			selectAccountBtn.onclick = () => {
+				this.gamePlayDom();
+				useGamePlay.call(this, accountId);
+			};
 		}
 	};
 

@@ -6,7 +6,7 @@ dom.createGameDom();
 // dom.gamePlayDom();
 
 // load acc
-dom.loadAccount();
+dom.render();
 
 //add click event on create acc btn
 dom.domDidMount().addAccountBtn.addEventListener('click', () => {

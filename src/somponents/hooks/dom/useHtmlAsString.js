@@ -3,14 +3,14 @@ export const createGameHtml = `<div class="piggame__setupGame">
     <h1 class="piggame__create--h1"><span>Create</span><span>Game</span></h1>
     <p class="piggame__create--p">Select bets size</p>
     <div class="piggame__create--betsChoices">
+        <button data-amount="1/3">1 / 3</button>
         <button data-amount="1/2">1 / 2</button>
-        <button data-amount="2x">2x</button>
         <button data-amount="min">min</button>
         <button data-amount="max">max</button>
     </div>
     <div class="piggame__create--input">
         <p id="betsDecrease">-</p>
-        <input id="input__value" value="200">
+        <input id="input__value" value="100">
         <p id="betsIncrease">+</p>
     </div>
     <div class="piggame__create--btn">
@@ -119,7 +119,7 @@ export const gamePlayHtml = `<div class="piggame__container">
     </div>
     <div class="piggame__dice">
         <div class="piggame__dice--cube">
-            <div class="piggame__dice--face">1</div>
+            <div  class="face_1 piggame__dice--face">1</div>
             <div class="piggame__dice--face">2</div>
             <div class="piggame__dice--face">3</div>
             <div class="piggame__dice--face">4</div>
@@ -127,7 +127,7 @@ export const gamePlayHtml = `<div class="piggame__container">
             <div class="piggame__dice--face">6</div>
         </div>
         <div class="piggame__dice--cube">
-            <div class="piggame__dice--face">1</div>
+            <div class="face_1 piggame__dice--face">1</div>
             <div class="piggame__dice--face">2</div>
             <div class="piggame__dice--face">3</div>
             <div class="piggame__dice--face">4</div>
