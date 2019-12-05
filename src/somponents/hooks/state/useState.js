@@ -1,6 +1,18 @@
 const useState = function() {
 	const state = JSON.parse(localStorage.getItem('accounts')) || [];
 	const accountId = { id: undefined };
+	const gamePlayState = {
+		you: {
+			total: 0
+		},
+		rival: {
+			total: 0
+		},
+		current: 0,
+		diceResult: 0,
+		active: true,
+		blockBtn: false
+	};
 
 	const setAccountId = (id) => {
 		return (accountId.id = id);
@@ -20,7 +32,15 @@ const useState = function() {
 		localStorage.setItem('accounts', JSON.stringify(state));
 	};
 
-	return { state, setState, removeByIdFromState, accountId, setAccountId, editState };
+	return {
+		state,
+		setState,
+		removeByIdFromState,
+		accountId,
+		setAccountId,
+		editState,
+		gamePlayState
+	};
 };
 
 export default useState;

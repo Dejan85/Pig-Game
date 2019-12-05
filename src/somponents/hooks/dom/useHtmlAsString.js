@@ -108,7 +108,7 @@ export const gamePlayHtml = `<div class="piggame__container">
 <div class="piggame__body">
     <div class="piggame__player">
         <div class="piggame__score">
-            <p class="piggame__score--name">You</p>
+            <p class="piggame__score--name animate">You</p>
             <p class="piggame__score--point" id="playerScore">0</p>
         </div>
         <div class="piggame__current">

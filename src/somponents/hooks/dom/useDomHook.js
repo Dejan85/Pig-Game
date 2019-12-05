@@ -44,7 +44,8 @@ const useDomHook = function() {
 			rivalScore: document.querySelector('#rivalScore'),
 			rivalCurrent: document.querySelector('#rivalCurrent'),
 			cube: document.querySelectorAll('.piggame__dice--cube'),
-			face_1: document.querySelectorAll('.face_1')
+			face_1: document.querySelectorAll('.face_1'),
+			name: document.querySelectorAll('.piggame__score--name')
 		};
 	};
 
