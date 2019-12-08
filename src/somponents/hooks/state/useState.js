@@ -11,7 +11,8 @@ const useState = function() {
 		current: 0,
 		diceResult: 0,
 		active: true,
-		blockBtn: false
+		blockBtn: false,
+		reset: false
 	};
 
 	const setAccountId = (id) => {

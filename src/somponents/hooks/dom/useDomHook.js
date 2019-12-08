@@ -14,6 +14,8 @@ const useDomHook = function() {
 	Dom.prototype.gamePlayDom = function() {
 		this.piggame.style.padding = '0 5rem';
 		this.piggame.innerHTML = gamePlayHtml;
+
+		this.timer();
 	};
 
 	// load create game html to dom
@@ -37,6 +39,7 @@ const useDomHook = function() {
 			historyList: document.querySelector('#historyList'),
 
 			// game play
+			piggame: document.querySelector('.piggame'),
 			rolldiceBtn: document.querySelector('.piggame__btns--rolldice'),
 			holdBtn: document.querySelector('.piggame__btns--hold'),
 			playerScore: document.querySelector('#playerScore'),
@@ -45,7 +48,11 @@ const useDomHook = function() {
 			rivalCurrent: document.querySelector('#rivalCurrent'),
 			cube: document.querySelectorAll('.piggame__dice--cube'),
 			face_1: document.querySelectorAll('.face_1'),
-			name: document.querySelectorAll('.piggame__score--name')
+			name: document.querySelectorAll('.piggame__score--name'),
+			minutFirstDecimal: document.querySelector('#minutFirstDecimal'),
+			minutLastDecimal: document.querySelector('#minutLastDecimal'),
+			secondFirstDecimal: document.querySelector('#secondFirstDecimal'),
+			secondLastDecimal: document.querySelector('#secondLastDecimal')
 		};
 	};
 
@@ -183,6 +190,44 @@ const useDomHook = function() {
 				editState(accountId.id, 'input', +input__value.value);
 			}
 		};
+	};
+
+	Dom.prototype.timer = function() {
+		const { minutFirstDecimal, minutLastDecimal, secondFirstDecimal, secondLastDecimal } = this.domDidMount();
+		let sec = 0;
+		let secondFirstDecimalNum = 0;
+		let min = 0;
+		let minFirstDecimalNum = 0;
+
+		console.log('radi');
+
+		setInterval(() => {
+			secondLastDecimal.textContent = ++sec;
+
+			if (sec === 10) {
+				secondLastDecimal.textContent = 0;
+				secondFirstDecimal.textContent = ++secondFirstDecimalNum;
+				sec = 0;
+			}
+
+			if (secondFirstDecimalNum === 6) {
+				minutLastDecimal.textContent = ++min;
+				sec = 0;
+				secondFirstDecimalNum = 0;
+				secondLastDecimal.textContent = 0;
+				secondFirstDecimal.textContent = 0;
+			}
+
+			if (min === 10) {
+				minutFirstDecimal.textContent = ++minFirstDecimalNum;
+				sec = 0;
+				secondFirstDecimalNum = 0;
+				min = 0;
+				minutLastDecimal.textContent = 0;
+				secondLastDecimal.textContent = 0;
+				secondFirstDecimal.textContent = 0;
+			}
+		}, 1000);
 	};
 
 	Dom.prototype.startGame = function() {

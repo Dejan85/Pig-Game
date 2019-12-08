@@ -49,7 +49,7 @@ export const createGameHtml = `<div class="piggame__setupGame">
         <p>Win</p>
         <p>Lose</p>
     </div>
-    <div class="piggame__history--list" id="historyList">
+   <div <div class="piggame__history--list" id="historyList">
         <div class="piggame__history--date">
             <p>27. 11. 2019.</p>
             <p>300</p>
@@ -83,7 +83,7 @@ export const gamePlayHtml = `<div class="piggame__container">
     </div>
 
     <div class="piggame__value">
-        <p class="piggame__value--info">50 To Win</p>
+        <p class="piggame__value--info">100 To Win</p>
         <p class="piggame__value--info">Winning Value</p>
         <p class="piggame__value--info">Get >= Scope to Win!</p>
     </div>
@@ -91,16 +91,16 @@ export const gamePlayHtml = `<div class="piggame__container">
     <div class="piggame__info">
         <div class="piggame__info--limit">
             <div class="piggame__info--firstnumber">
-                <p>0</p>
+                <p id="minutFirstDecimal">0</p>
             </div>
             <div class="piggame__info--secondnumber">
-                <p>0</p>
+                <p id="minutLastDecimal">0</p>
             </div>
             <div class="piggame__info--firstnumber">
-                <p>4</p>
+                <p id="secondFirstDecimal">0</p>
             </div>
             <div class="piggame__info--secondnumber">
-                <p>2</p>
+                <p id="secondLastDecimal">0</p>
             </div>
         </div>
     </div>
