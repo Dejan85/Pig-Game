@@ -14,13 +14,13 @@ const useDomHook = function() {
 	Dom.prototype.gamePlayDom = function() {
 		this.piggame.style.padding = '0 5rem';
 		this.piggame.innerHTML = gamePlayHtml;
-
 		this.timer();
 	};
 
 	// load create game html to dom
 	Dom.prototype.createGameDom = function() {
 		this.piggame.innerHTML = createGameHtml;
+		this.render();
 	};
 
 	// select elemtn after element load to html
@@ -36,7 +36,7 @@ const useDomHook = function() {
 			input__value: document.querySelector('#input__value'),
 			accountList: document.querySelector('#accountList'),
 			totalBudgetList: document.querySelector('#totalBudgetList'),
-			historyList: document.querySelector('#historyList'),
+			// historyList: document.querySelector('#historyList'),
 
 			// game play
 			piggame: document.querySelector('.piggame'),
@@ -72,8 +72,8 @@ const useDomHook = function() {
 					input: 100,
 					bets: 0,
 					name: e.target.value,
-					money: 1000,
-					history: []
+					money: 1000
+					// history: []
 				});
 				input.parentNode.removeChild(input);
 				this.render();
@@ -83,21 +83,24 @@ const useDomHook = function() {
 
 	// load acc from local storage
 	Dom.prototype.render = function() {
-		const { accountList, totalBudgetList, historyList } = this.domDidMount();
+		const { accountList, totalBudgetList } = this.domDidMount();
+		const { state } = useState();
 
 		// reset dom to not get duplicate
 		accountList.innerHTML = '';
 		totalBudgetList.innerHTML = '';
-		historyList.innerHTML = '';
+		// historyList.innerHTML = '';
+
+		console.log(state);
 
 		state &&
 			state.forEach((item, index) => {
 				accountList.innerHTML += `<p><i class="far fa-user"></i><span>${item.name}</span><i id="deleteBtn" data-key=${index} class="far fa-trash-alt"></i>`;
 				totalBudgetList.innerHTML += `<div class="piggame__amount--money"><p>$</p><p>${item.money}</p></div>`;
-				historyList.innerHTML += `<div class="piggame__history--date"></div>`;
-				[ ...document.querySelectorAll('.piggame__history--date') ].forEach((item) => {
-					// console.log(item);
-				});
+				// historyList.innerHTML += `<div class="piggame__history--date"></div>`;
+				// [ ...document.querySelectorAll('.piggame__history--date') ].forEach((item) => {
+				// 	// console.log(item);
+				// });
 			});
 
 		// delete account
@@ -198,8 +201,6 @@ const useDomHook = function() {
 		let secondFirstDecimalNum = 0;
 		let min = 0;
 		let minFirstDecimalNum = 0;
-
-		console.log('radi');
 
 		setInterval(() => {
 			secondLastDecimal.textContent = ++sec;

@@ -40,7 +40,7 @@ export const createGameHtml = `<div class="piggame__setupGame">
       
     </div>
 </div>
-<div class="piggame__history">
+<!--<div class="piggame__history">
     <h2 class="piggame__account--h2">
         History
     </h2>
@@ -72,7 +72,7 @@ export const createGameHtml = `<div class="piggame__setupGame">
         </div>
     </div>
 
-</div>
+</div>->
 </div>`;
 
 export const gamePlayHtml = `<div class="piggame__container">

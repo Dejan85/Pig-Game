@@ -1,7 +1,7 @@
 import useState from '../state/useState';
 
 const useGamePlay = function(accountId) {
-	const { state, setState, gamePlayState } = useState();
+	const { state, setState, editState, gamePlayState } = useState();
 	const {
 		piggame,
 		rolldiceBtn,
@@ -14,8 +14,6 @@ const useGamePlay = function(accountId) {
 		rivalCurrent,
 		name
 	} = this.domDidMount();
-
-	console.log(this);
 
 	// add click event on roll dice btn
 	rolldiceBtn.onclick = function() {
@@ -117,46 +115,48 @@ const useGamePlay = function(accountId) {
 
 	// hold score
 	const holdScore = (reset) => {
-		if (reset) {
-			playerCurrent.textContent = 0;
-			rivalCurrent.textContent = 0;
-			gamePlayState.current = 0;
-			gamePlayState.diceResult = 0;
-		}
-
-		if (gamePlayState.active) {
-			playerScore.textContent = parseInt(playerScore.textContent) + parseInt(gamePlayState.current);
-			gamePlayState.current = 0;
-			playerCurrent.textContent = gamePlayState.current;
-			gamePlayState.player = playerScore.textContent;
-			switchAnimation();
-
-			if (gamePlayState.player >= 100) {
-				piggame.innerHTML += `<div class="gameFinish"><p class="animate">Player Win!</p></div>`;
-				setTimeout(() => {
-					resetDomToStarOfGame();
-				}, 5000);
+		if (!gamePlayState.gameEnd) {
+			if (reset) {
+				playerCurrent.textContent = 0;
+				rivalCurrent.textContent = 0;
+				gamePlayState.current = 0;
+				gamePlayState.diceResult = 0;
 			}
-		} else {
-			rivalScore.textContent = parseInt(rivalScore.textContent) + parseInt(gamePlayState.current);
-			gamePlayState.current = 0;
-			rivalCurrent.textContent = gamePlayState.current;
-			gamePlayState.rival = rivalScore.textContent;
-			switchAnimation();
 
-			if (gamePlayState.rival >= 100) {
-				piggame.innerHTML += `<div class="gameFinish"><p class="animate">Rival Win!</p></div>`;
-				setTimeout(() => {
-					resetDomToStarOfGame();
-				}, 5000);
+			if (gamePlayState.active) {
+				playerScore.textContent = parseInt(playerScore.textContent) + parseInt(gamePlayState.current);
+				gamePlayState.current = 0;
+				playerCurrent.textContent = gamePlayState.current;
+				gamePlayState.player = playerScore.textContent;
+				switchAnimation();
+
+				if (gamePlayState.player >= 10) {
+					piggame.innerHTML += `<div class="gameFinish"><p class="animate">Player Win!</p></div>`;
+					setTimeout(() => {
+						resetDomToStarOfGame(true);
+					}, 5000);
+				}
+			} else {
+				rivalScore.textContent = parseInt(rivalScore.textContent) + parseInt(gamePlayState.current);
+				gamePlayState.current = 0;
+				rivalCurrent.textContent = gamePlayState.current;
+				gamePlayState.rival = rivalScore.textContent;
+				switchAnimation();
+
+				if (gamePlayState.rival >= 10) {
+					piggame.innerHTML += `<div class="gameFinish"><p class="animate">Rival Win!</p></div>`;
+					setTimeout(() => {
+						resetDomToStarOfGame(false);
+					}, 5000);
+				}
 			}
-		}
 
-		gamePlayState.active = !gamePlayState.active;
-		if (!gamePlayState.active) {
-			rivalPlay();
-		} else {
-			gamePlayState.blockBtn = false;
+			gamePlayState.active = !gamePlayState.active;
+			if (!gamePlayState.active) {
+				rivalPlay();
+			} else {
+				gamePlayState.blockBtn = false;
+			}
 		}
 	};
 
@@ -181,9 +181,19 @@ const useGamePlay = function(accountId) {
 	};
 
 	// reset dom to start position
-	const resetDomToStarOfGame = () => {
+	const resetDomToStarOfGame = (win) => {
+		const acc = state[accountId.id];
+		gamePlayState.gameEnd = true;
+
+		if (win) {
+			editState(accountId.id, 'money', acc.money + acc.input);
+
+			console.log(state);
+		} else {
+			editState(accountId.id, 'money', acc.money - acc.input);
+		}
+
 		this.createGameDom();
-		this.render();
 	};
 
 	// css animation parametars
