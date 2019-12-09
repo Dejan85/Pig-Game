@@ -8,7 +8,8 @@ const useState = function() {
 		diceResult: 0,
 		active: true,
 		blockBtn: false,
-		reset: false
+		reset: false,
+		gameEnd: false
 	};
 
 	const setAccountId = (id) => {

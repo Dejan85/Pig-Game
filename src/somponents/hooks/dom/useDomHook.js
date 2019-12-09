@@ -188,11 +188,33 @@ const useDomHook = function() {
 			};
 		});
 
-		input__value.onkeypress = (e) => {
-			if (e.keyCode === 13 || e.charCode === 13) {
-				editState(accountId.id, 'input', +input__value.value);
-			}
-		};
+		// input__value.onkeypress = (e) => {
+		// 	const charCode = e.which ? e.which : e.keyCode;
+
+		// 	console.log(parseInt(input));
+
+		// 	if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+		// 	if (parseInt(input__value.value) > state[accountId.id].money) return false;
+
+		// 	editState(accountId.id, 'input', +input__value.value);
+		// 	return true;
+		// };
+
+		// input__value.onclick = function() {
+		// 	this.value = '';
+		// };
+
+		// input__value.addEventListener('keypress', (e) => {
+		// 	const charCode = e.which ? e.which : e.keyCode;
+		// 	console.log(input__value.value);
+		// 	console.log(state[accountId.id].money);
+
+		// 	if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+		// 	if (parseInt(input__value.value) > state[accountId.id].money) return false;
+
+		// 	editState(accountId.id, 'input', +input__value.value);
+		// 	return true;
+		// });
 	};
 
 	Dom.prototype.timer = function() {

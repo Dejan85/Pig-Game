@@ -130,7 +130,7 @@ const useGamePlay = function(accountId) {
 				gamePlayState.player = playerScore.textContent;
 				switchAnimation();
 
-				if (gamePlayState.player >= 10) {
+				if (gamePlayState.player >= 100) {
 					piggame.innerHTML += `<div class="gameFinish"><p class="animate">Player Win!</p></div>`;
 					setTimeout(() => {
 						resetDomToStarOfGame(true);
@@ -143,7 +143,7 @@ const useGamePlay = function(accountId) {
 				gamePlayState.rival = rivalScore.textContent;
 				switchAnimation();
 
-				if (gamePlayState.rival >= 10) {
+				if (gamePlayState.rival >= 100) {
 					piggame.innerHTML += `<div class="gameFinish"><p class="animate">Rival Win!</p></div>`;
 					setTimeout(() => {
 						resetDomToStarOfGame(false);
@@ -194,6 +194,7 @@ const useGamePlay = function(accountId) {
 		}
 
 		this.createGameDom();
+		editState(accountId.id, 'input', 100);
 	};
 
 	// css animation parametars

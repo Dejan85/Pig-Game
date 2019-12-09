@@ -10,7 +10,7 @@ export const createGameHtml = `<div class="piggame__setupGame">
     </div>
     <div class="piggame__create--input">
         <p id="betsDecrease">-</p>
-        <input id="input__value" value="100">
+        <input id="input__value" readonly value="100">
         <p id="betsIncrease">+</p>
     </div>
     <div class="piggame__create--btn">
